@@ -3,7 +3,7 @@
 # Questions
 - How do we handle multiple users with the same age if there isn't room for all of them in the top K list? (Please seem assumptions for how I currently handle this case)
 - Should we propagate any errors or validations to the UI. For example, should be alert the user if the underlying services are down?
-- How should phone number be validated? Do we care about local numbers (i.e., only 7 digits) or extentions?
+- How should phone number be validated? Do we care about local numbers (i.e., without area code / only 7 digits) or extentions?
 
 # Assumptions
 - If there are multiple users with the same age, the first ones we see will make it into the top K list and others will be ignored.
