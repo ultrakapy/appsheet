@@ -85,7 +85,7 @@ public class UserRepositoryImpl implements IUserRepository {
 
         try {
             HttpRequest userListRequest = requestFactory.buildGetRequest(new GenericUrl(getUserListUrl()));
-            AppSheetResponse userListResponse = userListRequest.execute().parseAs(AppSheetResponse.class);
+            UserListResponse userListResponse = userListRequest.execute().parseAs(UserListResponse.class);
 
             // Get all User IDs, making multiple service calls as long as there are more IDs available
             // (denoted by the existence of a token)
@@ -99,7 +99,7 @@ public class UserRepositoryImpl implements IUserRepository {
                         HttpRequest userListNextPageRequest =
                                 requestFactory.buildGetRequest(
                                         new GenericUrl(getUserListUrlByToken(userListResponse.token)));
-                        userListResponse = userListNextPageRequest.execute().parseAs(AppSheetResponse.class);
+                        userListResponse = userListNextPageRequest.execute().parseAs(UserListResponse.class);
                     } catch (Exception e) {
                         // As noted in assumptions: I would log this exception
                         // Continue fetching any available User IDs

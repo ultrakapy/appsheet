@@ -2,7 +2,7 @@ package appsheet.repository;
 
 import com.google.api.client.util.Key;
 
-public class AppSheetResponse {
+public class UserListResponse {
     @Key
     public int[] result;
     @Key
