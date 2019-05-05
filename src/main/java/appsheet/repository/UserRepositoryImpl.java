@@ -47,7 +47,8 @@ public class UserRepositoryImpl implements IUserRepository {
     @Override
     public List<User> getYoungestKUsers(int k) {
         // topUsersPQ orders users from oldest to youngest
-        // so that we can efficiently (in constant time) remove the oldest user
+        // so that we can efficiently (in constant time) remove the oldest user & adding users is O(Log(k))
+        // for each user and O(N*Log(k)) overall, where N is the total number of users with valid phone numbers.
         // Below I make sure the size of topUsersPQ never exceeds k+1, so it's also space efficient
         PriorityQueue<User> topUsersPQ = new PriorityQueue<>(k, (user1, user2) -> user2.getAge() - user1.getAge());
 
@@ -75,7 +76,7 @@ public class UserRepositoryImpl implements IUserRepository {
         }
 
         List<User> topUsersList = new ArrayList<>(topUsersPQ);
-        // sort top uses by name
+        // sort top uses by name, which takes O(k*Log(k))
         topUsersList.sort((user1, user2) -> user1.getName().compareTo(user2.getName()));
         return topUsersList;
     }
