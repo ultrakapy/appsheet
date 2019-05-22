@@ -22,12 +22,6 @@
 - Update the backend service I wrote to query the underlying services using multiple threads so that we can get the user details concurrently.
 - In the UI, add some kind of "in progress" indicator so the user is aware if the service is taking a while to run to completion.
 
-- 1 thread gets IDs and puts them on a queue
-- 1 thread pulls IDs from the queue and assigns another thread to get the details for that user (from the thread pool)
-if (there are any available threads in the pull) {
-  perform some action on an available thread 
-}
-
 ## Output of the 5 youngest users with valid phone numbers sorted by name: 
 
 User{id=15, name='julia', age=24, number='(555) 555-5555', photo='https://appsheettest1.azurewebsites.net/female-5.jpg', bio='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex sapien, interdum sit amet tempor sit amet, pretium id neque. Nam ultricies ac felis ut lobortis. Praesent ac purus vitae est dignissim sollicitudin. Duis iaculis tristique euismod. Nulla tellus libero, gravida sit amet nisi vitae, ultrices venenatis turpis. Morbi ut dui nunc.'}
